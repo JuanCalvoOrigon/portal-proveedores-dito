@@ -1,0 +1,1469 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flujos de Login - Dito Portal Proveedores</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #0f172a;
+            color: #e2e8f0;
+            overflow-x: hidden;
+        }
+
+        /* ========== HEADER ========== */
+        .main-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(56, 189, 248, 0.15);
+            padding: 0 40px;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .header-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .header-logo svg {
+            width: 32px;
+            height: 32px;
+        }
+
+        .header-logo span {
+            font-size: 20px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .header-subtitle {
+            font-size: 13px;
+            color: #94a3b8;
+            font-weight: 400;
+        }
+
+        .header-nav {
+            display: flex;
+            gap: 6px;
+        }
+
+        .header-nav button {
+            padding: 8px 18px;
+            border: none;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            background: transparent;
+            color: #94a3b8;
+        }
+
+        .header-nav button:hover {
+            background: rgba(56, 189, 248, 0.1);
+            color: #e2e8f0;
+        }
+
+        .header-nav button.active {
+            background: linear-gradient(135deg, #0ea5e9, #6366f1);
+            color: white;
+            box-shadow: 0 4px 15px rgba(14, 165, 233, 0.3);
+        }
+
+        /* ========== HERO / INTRO ========== */
+        .hero {
+            margin-top: 64px;
+            min-height: calc(100vh - 64px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 60px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -200px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            border-radius: 100px;
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            font-size: 13px;
+            color: #38bdf8;
+            font-weight: 500;
+            margin-bottom: 24px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, #f8fafc, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero h1 em {
+            font-style: normal;
+            background: linear-gradient(135deg, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: #94a3b8;
+            max-width: 640px;
+            line-height: 1.6;
+            margin-bottom: 40px;
+        }
+
+        .hero-cards {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .hero-card {
+            background: rgba(30, 41, 59, 0.8);
+            border: 1px solid rgba(56, 189, 248, 0.1);
+            border-radius: 16px;
+            padding: 28px 24px;
+            width: 240px;
+            text-align: left;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            border-radius: 16px 16px 0 0;
+            transition: opacity 0.3s;
+        }
+
+        .hero-card:nth-child(1)::before { background: linear-gradient(90deg, #0ea5e9, #38bdf8); }
+        .hero-card:nth-child(2)::before { background: linear-gradient(90deg, #8b5cf6, #a78bfa); }
+        .hero-card:nth-child(3)::before { background: linear-gradient(90deg, #10b981, #34d399); }
+
+        .hero-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(56, 189, 248, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-card .card-flow-num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 14px;
+        }
+
+        .hero-card:nth-child(1) .card-flow-num { background: rgba(14, 165, 233, 0.15); color: #38bdf8; }
+        .hero-card:nth-child(2) .card-flow-num { background: rgba(139, 92, 246, 0.15); color: #a78bfa; }
+        .hero-card:nth-child(3) .card-flow-num { background: rgba(16, 185, 129, 0.15); color: #34d399; }
+
+        .hero-card h3 {
+            font-size: 15px;
+            font-weight: 600;
+            color: #f1f5f9;
+            margin-bottom: 6px;
+        }
+
+        .hero-card p {
+            font-size: 13px;
+            color: #64748b;
+            line-height: 1.5;
+            margin-bottom: 0;
+        }
+
+        /* ========== SECTIONS / FLOWS ========== */
+        .flow-section {
+            display: none;
+            margin-top: 64px;
+            min-height: calc(100vh - 64px);
+            padding: 40px;
+        }
+
+        .flow-section.active {
+            display: block;
+            animation: fadeInSection 0.5s ease;
+        }
+
+        @keyframes fadeInSection {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Flow Header */
+        .flow-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .flow-number {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 20px;
+            border-radius: 100px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .flow-1 .flow-number { background: rgba(14, 165, 233, 0.15); color: #38bdf8; border: 1px solid rgba(14, 165, 233, 0.25); }
+        .flow-2 .flow-number { background: rgba(139, 92, 246, 0.15); color: #a78bfa; border: 1px solid rgba(139, 92, 246, 0.25); }
+        .flow-3 .flow-number { background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.25); }
+
+        .flow-header h2 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .flow-header .flow-condition {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            border-radius: 12px;
+            background: rgba(30, 41, 59, 0.8);
+            border: 1px solid rgba(100, 116, 139, 0.2);
+            font-size: 14px;
+            color: #cbd5e1;
+            margin-top: 12px;
+        }
+
+        .flow-condition code {
+            padding: 2px 8px;
+            border-radius: 6px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .flow-1 .flow-condition code { background: rgba(14, 165, 233, 0.15); color: #38bdf8; }
+        .flow-2 .flow-condition code { background: rgba(139, 92, 246, 0.15); color: #a78bfa; }
+        .flow-3 .flow-condition code { background: rgba(16, 185, 129, 0.15); color: #34d399; }
+
+        /* ========== FLOW TIMELINE ========== */
+        .flow-timeline {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        /* Steps */
+        .flow-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 32px;
+            margin-bottom: 60px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .flow-step.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .flow-step:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            left: 27px;
+            top: 60px;
+            bottom: -40px;
+            width: 2px;
+            background: linear-gradient(to bottom, rgba(56, 189, 248, 0.3), transparent);
+        }
+
+        .flow-2 .flow-step:not(:last-child)::after {
+            background: linear-gradient(to bottom, rgba(139, 92, 246, 0.3), transparent);
+        }
+
+        .flow-3 .flow-step:not(:last-child)::after {
+            background: linear-gradient(to bottom, rgba(16, 185, 129, 0.3), transparent);
+        }
+
+        .step-indicator {
+            flex-shrink: 0;
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            font-weight: 700;
+            position: relative;
+            z-index: 2;
+        }
+
+        .flow-1 .step-indicator { background: linear-gradient(135deg, #0ea5e9, #0284c7); color: white; box-shadow: 0 8px 24px rgba(14, 165, 233, 0.3); }
+        .flow-2 .step-indicator { background: linear-gradient(135deg, #8b5cf6, #7c3aed); color: white; box-shadow: 0 8px 24px rgba(139, 92, 246, 0.3); }
+        .flow-3 .step-indicator { background: linear-gradient(135deg, #10b981, #059669); color: white; box-shadow: 0 8px 24px rgba(16, 185, 129, 0.3); }
+
+        .step-content {
+            flex: 1;
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid rgba(100, 116, 139, 0.15);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .step-content:hover {
+            border-color: rgba(100, 116, 139, 0.3);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+
+        .step-text {
+            padding: 24px 28px;
+        }
+
+        .step-text h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #f1f5f9;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .step-text h3 .step-icon {
+            font-size: 20px;
+        }
+
+        .step-text p {
+            font-size: 14px;
+            color: #94a3b8;
+            line-height: 1.6;
+        }
+
+        .step-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 3px 10px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .tag-redirect { background: rgba(251, 191, 36, 0.15); color: #fbbf24; }
+        .tag-screen { background: rgba(56, 189, 248, 0.15); color: #38bdf8; }
+        .tag-action { background: rgba(16, 185, 129, 0.15); color: #34d399; }
+        .tag-menu { background: rgba(139, 92, 246, 0.15); color: #a78bfa; }
+        .tag-nav { background: rgba(244, 114, 182, 0.15); color: #f472b6; }
+
+        .step-image-wrapper {
+            padding: 0 20px 20px;
+        }
+
+        .step-image-container {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(100, 116, 139, 0.15);
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .step-image-container:hover {
+            transform: scale(1.01);
+        }
+
+        .step-image-container img {
+            width: 100%;
+            display: block;
+        }
+
+        /* Image overlays / highlights */
+        .img-overlay {
+            position: absolute;
+            border-radius: 8px;
+            pointer-events: none;
+        }
+
+        .img-overlay.highlight {
+            border: 3px solid;
+            animation: pulseHighlight 2s infinite;
+        }
+
+        .img-overlay.highlight-blue { border-color: #38bdf8; box-shadow: 0 0 20px rgba(56, 189, 248, 0.4); }
+        .img-overlay.highlight-purple { border-color: #a78bfa; box-shadow: 0 0 20px rgba(167, 139, 250, 0.4); }
+        .img-overlay.highlight-green { border-color: #34d399; box-shadow: 0 0 20px rgba(52, 211, 153, 0.4); }
+        .img-overlay.highlight-amber { border-color: #fbbf24; box-shadow: 0 0 20px rgba(251, 191, 36, 0.4); }
+        .img-overlay.highlight-red { border-color: #f87171; box-shadow: 0 0 20px rgba(248, 113, 113, 0.4); }
+
+        @keyframes pulseHighlight {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+
+        .img-label {
+            position: absolute;
+            padding: 6px 14px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 600;
+            color: white;
+            white-space: nowrap;
+            pointer-events: none;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        .img-label-blue { background: #0ea5e9; }
+        .img-label-purple { background: #8b5cf6; }
+        .img-label-green { background: #10b981; }
+        .img-label-amber { background: #f59e0b; }
+        .img-label-red { background: #ef4444; }
+
+        .img-label::before {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 20px;
+            width: 12px;
+            height: 12px;
+            background: inherit;
+            transform: rotate(45deg);
+        }
+
+        .img-label.label-bottom::before {
+            bottom: auto;
+            top: -6px;
+        }
+
+        /* Arrow annotations */
+        .img-arrow {
+            position: absolute;
+            pointer-events: none;
+        }
+
+        /* Features list within steps */
+        .step-features {
+            display: flex;
+            gap: 12px;
+            margin-top: 14px;
+            flex-wrap: wrap;
+        }
+
+        .step-feature {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 14px;
+            border-radius: 10px;
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(100, 116, 139, 0.15);
+            font-size: 13px;
+            color: #cbd5e1;
+        }
+
+        .step-feature .feat-icon {
+            font-size: 16px;
+        }
+
+        /* ========== CONNECTOR ARROW BETWEEN STEPS ========== */
+        .step-connector {
+            display: flex;
+            justify-content: center;
+            margin: -20px 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .connector-arrow {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            padding-left: 56px;
+        }
+
+        .connector-arrow .arrow-line {
+            width: 2px;
+            height: 30px;
+        }
+
+        .flow-1 .connector-arrow .arrow-line { background: linear-gradient(to bottom, rgba(14, 165, 233, 0.5), rgba(14, 165, 233, 0.1)); }
+
+        .connector-arrow .arrow-text {
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 4px 12px;
+            border-radius: 6px;
+        }
+
+        .flow-1 .connector-arrow .arrow-text { color: #38bdf8; background: rgba(14, 165, 233, 0.1); }
+
+        /* ========== COMPARISON TABLE (optional) ========== */
+        .comparison-section {
+            display: none;
+            margin-top: 64px;
+            min-height: calc(100vh - 64px);
+            padding: 60px 40px;
+        }
+
+        .comparison-section.active {
+            display: block;
+            animation: fadeInSection 0.5s ease;
+        }
+
+        .comparison-section h2 {
+            text-align: center;
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 40px;
+        }
+
+        .comparison-table {
+            max-width: 1000px;
+            margin: 0 auto;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(100, 116, 139, 0.15);
+            background: rgba(30, 41, 59, 0.6);
+        }
+
+        .comparison-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .comparison-table th {
+            padding: 18px 24px;
+            text-align: left;
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #94a3b8;
+            border-bottom: 1px solid rgba(100, 116, 139, 0.15);
+            background: rgba(15, 23, 42, 0.5);
+        }
+
+        .comparison-table th:first-child {
+            width: 220px;
+        }
+
+        .comparison-table td {
+            padding: 16px 24px;
+            font-size: 14px;
+            color: #cbd5e1;
+            border-bottom: 1px solid rgba(100, 116, 139, 0.08);
+            vertical-align: top;
+        }
+
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .comparison-table td:first-child {
+            font-weight: 600;
+            color: #e2e8f0;
+        }
+
+        .check { color: #34d399; font-weight: 700; }
+        .cross { color: #64748b; }
+
+        .col-flow1 { border-left: 3px solid rgba(14, 165, 233, 0.3); }
+        .col-flow2 { border-left: 3px solid rgba(139, 92, 246, 0.3); }
+        .col-flow3 { border-left: 3px solid rgba(16, 185, 129, 0.3); }
+
+        /* ========== LIGHTBOX ========== */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 2000;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            cursor: zoom-out;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox.open {
+            display: flex;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .lightbox img {
+            max-width: 95%;
+            max-height: 95%;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* ========== DIAGRAM SECTION ========== */
+        .diagram-container {
+            max-width: 1000px;
+            margin: 0 auto 60px;
+            padding: 32px;
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid rgba(100, 116, 139, 0.15);
+            border-radius: 20px;
+        }
+
+        .diagram-container h3 {
+            text-align: center;
+            margin-bottom: 28px;
+            font-size: 18px;
+            color: #e2e8f0;
+        }
+
+        /* Flowchart diagram */
+        .flowchart {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0;
+        }
+
+        .fc-node {
+            padding: 14px 28px;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 600;
+            text-align: center;
+            position: relative;
+            min-width: 200px;
+        }
+
+        .fc-node-login {
+            background: linear-gradient(135deg, #1e3a5f, #1e293b);
+            border: 2px solid #38bdf8;
+            color: #38bdf8;
+        }
+
+        .fc-node-decision {
+            background: rgba(251, 191, 36, 0.1);
+            border: 2px solid #fbbf24;
+            color: #fbbf24;
+            border-radius: 12px;
+            transform: rotate(0deg);
+            padding: 16px 20px;
+        }
+
+        .fc-node-result-1 {
+            background: rgba(14, 165, 233, 0.1);
+            border: 2px solid #0ea5e9;
+            color: #38bdf8;
+        }
+
+        .fc-node-result-2 {
+            background: rgba(139, 92, 246, 0.1);
+            border: 2px solid #8b5cf6;
+            color: #a78bfa;
+        }
+
+        .fc-node-result-3 {
+            background: rgba(16, 185, 129, 0.1);
+            border: 2px solid #10b981;
+            color: #34d399;
+        }
+
+        .fc-arrow {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 40px;
+            position: relative;
+        }
+
+        .fc-arrow .fc-line {
+            width: 2px;
+            flex: 1;
+            background: rgba(148, 163, 184, 0.3);
+        }
+
+        .fc-arrow .fc-arrowhead {
+            width: 0;
+            height: 0;
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-top: 8px solid rgba(148, 163, 184, 0.5);
+        }
+
+        .fc-arrow-label {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 11px;
+            color: #94a3b8;
+            white-space: nowrap;
+            font-weight: 500;
+        }
+
+        .fc-branches {
+            display: flex;
+            gap: 40px;
+            position: relative;
+        }
+
+        .fc-branch {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0;
+        }
+
+        .fc-branch-label {
+            font-size: 12px;
+            font-weight: 600;
+            padding: 4px 12px;
+            border-radius: 6px;
+            margin-bottom: 8px;
+        }
+
+        .fc-branch-label-1 { background: rgba(14, 165, 233, 0.15); color: #38bdf8; }
+        .fc-branch-label-2 { background: rgba(139, 92, 246, 0.15); color: #a78bfa; }
+        .fc-branch-label-3 { background: rgba(16, 185, 129, 0.15); color: #34d399; }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 32px; }
+            .hero-cards { flex-direction: column; }
+            .flow-step { flex-direction: column; gap: 16px; }
+            .step-indicator { width: 44px; height: 44px; font-size: 18px; border-radius: 12px; }
+            .flow-step:not(:last-child)::after { display: none; }
+            .fc-branches { flex-direction: column; gap: 20px; }
+            .header-nav { display: none; }
+        }
+
+        /* ========== SCROLL ANIMATIONS ========== */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Back to top */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, #0ea5e9, #6366f1);
+            border: none;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s;
+            z-index: 900;
+            box-shadow: 0 8px 24px rgba(14, 165, 233, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Print styles */
+        @media print {
+            .main-header, .back-to-top { display: none; }
+            .flow-section { display: block !important; page-break-before: always; }
+            .hero { min-height: auto; page-break-after: always; }
+            body { background: white; color: #1e293b; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="main-header">
+        <div class="header-logo">
+            <svg viewBox="0 0 32 32" fill="none">
+                <rect width="32" height="32" rx="8" fill="url(#g1)"/>
+                <path d="M8 16L14 22L24 10" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                <defs><linearGradient id="g1" x1="0" y1="0" x2="32" y2="32"><stop stop-color="#0ea5e9"/><stop offset="1" stop-color="#6366f1"/></linearGradient></defs>
+            </svg>
+            <div>
+                <span>Dito — Portal Proveedores</span>
+                <div class="header-subtitle">Flujos de Inicio de Sesión</div>
+            </div>
+        </div>
+        <nav class="header-nav">
+            <button class="active" onclick="showSection('hero')">Inicio</button>
+            <button onclick="showSection('flow1')">Flujo 1</button>
+            <button onclick="showSection('flow2')">Flujo 2</button>
+            <button onclick="showSection('flow3')">Flujo 3</button>
+            <button onclick="showSection('comparison')">Comparativa</button>
+        </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero" id="hero">
+        <div class="hero-badge">
+            <span>📋</span> Documento de Diseño Funcional
+        </div>
+        <h1>Flujos de Inicio de Sesión<br>en <em>Dito</em></h1>
+        <p>Definición de los tres flujos de experiencia al iniciar sesión en Dito, según el grupo funcional del usuario y su comunidad asociada.</p>
+
+        <!-- Flowchart Diagram -->
+        <div class="diagram-container" style="margin-top:20px; width:100%; max-width:900px;">
+            <h3>Diagrama de Decisión — Login en Dito</h3>
+            <div class="flowchart">
+                <div class="fc-node fc-node-login">🔐 Usuario inicia sesión en Dito</div>
+                <div class="fc-arrow"><div class="fc-line"></div><div class="fc-arrowhead"></div></div>
+                <div class="fc-node fc-node-decision">¿Grupo Funcional + Comunidad?</div>
+                <div class="fc-arrow" style="height:24px"><div class="fc-line"></div><div class="fc-arrowhead"></div></div>
+                <div class="fc-branches">
+                    <div class="fc-branch">
+                        <div class="fc-branch-label fc-branch-label-1">DITO001 (solo)</div>
+                        <div class="fc-arrow" style="height:24px"><div class="fc-line"></div><div class="fc-arrowhead"></div></div>
+                        <div class="fc-node fc-node-result-1" style="cursor:pointer" onclick="showSection('flow1')">
+                            → Widget Colaboración<br><small style="font-weight:400;font-size:12px">(Portal Proveedores)</small>
+                        </div>
+                    </div>
+                    <div class="fc-branch">
+                        <div class="fc-branch-label fc-branch-label-2">DITO001 + Comunidad GS</div>
+                        <div class="fc-arrow" style="height:24px"><div class="fc-line"></div><div class="fc-arrowhead"></div></div>
+                        <div class="fc-node fc-node-result-2" style="cursor:pointer" onclick="showSection('flow2')">
+                            → Módulo Inicio (nuevo)<br><small style="font-weight:400;font-size:12px">+ Portal Proveedores en menú</small>
+                        </div>
+                    </div>
+                    <div class="fc-branch">
+                        <div class="fc-branch-label fc-branch-label-3">DITO002 + Comunidad GS</div>
+                        <div class="fc-arrow" style="height:24px"><div class="fc-line"></div><div class="fc-arrowhead"></div></div>
+                        <div class="fc-node fc-node-result-3" style="cursor:pointer" onclick="showSection('flow3')">
+                            → Módulo Inicio (nuevo)<br><small style="font-weight:400;font-size:12px">sin contador + Portal Proveedores en menú</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-cards">
+            <div class="hero-card" onclick="showSection('flow1')">
+                <div class="card-flow-num">F1</div>
+                <h3>Flujo 1 — DITO001</h3>
+                <p>Redirección directa al Portal Proveedores (Widget Colaboración)</p>
+            </div>
+            <div class="hero-card" onclick="showSection('flow2')">
+                <div class="card-flow-num">F2</div>
+                <h3>Flujo 2 — DITO001 + GS</h3>
+                <p>Módulo Inicio nuevo con acceso a Portal Proveedores desde menú</p>
+            </div>
+            <div class="hero-card" onclick="showSection('flow3')">
+                <div class="card-flow-num">F3</div>
+                <h3>Flujo 3 — DITO002 + GS</h3>
+                <p>Módulo de Inicio (sin contador) con Portal Proveedores en menú</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== FLUJO 1 ===================== -->
+    <section class="flow-section flow-1" id="flow1">
+        <div class="flow-header">
+            <div class="flow-number">FLUJO 1</div>
+            <h2>Grupo Funcional DITO001</h2>
+            <div class="flow-condition">
+                Condición: Servicio = <code>DITO001</code> &nbsp;(sin Comunidad GS)
+            </div>
+        </div>
+
+        <div class="flow-timeline">
+            <!-- Step 1: Login -->
+            <div class="flow-step animate-on-scroll">
+                <div class="step-indicator">1</div>
+                <div class="step-content">
+                    <div class="step-text">
+                        <h3>
+                            <span class="step-icon">🔐</span>
+                            Inicio de Sesión en Dito
+                            <span class="step-tag tag-screen">Pantalla</span>
+                        </h3>
+                        <p>El usuario accede a la pantalla de login de Dito e ingresa sus credenciales (correo y contraseña). El sistema valida las credenciales y detecta que su grupo funcional es <strong>DITO001</strong>.</p>
+                    </div>
+                    <div class="step-image-wrapper">
+                        <div class="step-image-container" onclick="openLightbox(this.querySelector('img').src)">
+                            <img src="img/login dito.png" alt="Login Dito">
+                            <div class="img-label img-label-blue" style="top:54%;left:38%;">El usuario ingresa credenciales</div>
+                            <div class="img-overlay highlight highlight-blue" style="top:48%;left:37%;width:27%;height:24%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 2: Redirect -->
+            <div class="flow-step animate-on-scroll">
+                <div class="step-indicator">2</div>
+                <div class="step-content">
+                    <div class="step-text">
+                        <h3>
+                            <span class="step-icon">🔄</span>
+                            Redirección Automática
+                            <span class="step-tag tag-redirect">Redirección</span>
+                        </h3>
+                        <p>Al iniciar sesión, el sistema <strong>NO muestra el módulo de Inicio estándar de Dito</strong>. En su lugar, el usuario es redirigido automáticamente al nuevo <strong>Widget de Colaboración (Portal Proveedores)</strong>.</p>
+                        <div class="step-features">
+                            <div class="step-feature"><span class="feat-icon">⚡</span> Redirección automática</div>
+                            <div class="step-feature"><span class="feat-icon">🚫</span> No se muestra el módulo de Inicio</div>
+                            <div class="step-feature"><span class="feat-icon">🎯</span> Destino: Portal Proveedores</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 3: Portal Proveedores -->
+            <div class="flow-step animate-on-scroll">
+                <div class="step-indicator">3</div>
+                <div class="step-content">
+                    <div class="step-text">
+                        <h3>
+                            <span class="step-icon">📊</span>
+                            Widget de Colaboración — Portal Proveedores
+                            <span class="step-tag tag-screen">Pantalla Principal</span>
+                        </h3>
+                        <p>El usuario aterriza en el <strong>Portal de Proveedores</strong> donde puede visualizar un resumen completo de su operación: saldos pendientes, documentos en proceso de pago, órdenes de compra abiertas y elementos que requieren atención.</p>
+                    </div>
+                    <div class="step-image-wrapper">
+                        <div class="step-image-container" onclick="openLightbox(this.querySelector('img').src)">
+                            <img src="img/nuevo widget colaboración .png" alt="Portal Proveedores - Widget Colaboración">
+                            <!-- KPIs highlight -->
+                            <div class="img-overlay highlight highlight-blue" style="top:27%;left:13%;width:83%;height:17%;border-radius:12px;"></div>
+                            <div class="img-label img-label-blue" style="top:22%;left:30%;">Resumen de operación: KPIs principales</div>
+                            
+                            <!-- Sidebar Operaciones -->
+                            <div class="img-overlay highlight highlight-amber" style="top:21%;left:0.5%;width:12%;height:12%;border-radius:8px;"></div>
+                            <div class="img-label img-label-amber" style="top:17%;left:1%;">Menú Operaciones</div>
+                            
+                            <!-- Sidebar Finanzas -->
+                            <div class="img-overlay highlight highlight-green" style="top:35%;left:0.5%;width:12%;height:15%;border-radius:8px;"></div>
+                            <div class="img-label img-label-green" style="top:51%;left:1%;">Menú Finanzas</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 4: Acciones Disponibles -->
+            <div class="flow-step animate-on-scroll">
+                <div class="step-indicator">4</div>
+                <div class="step-content">
+                    <div class="step-text">
+                        <h3>
+                            <span class="step-icon">⚙️</span>
+                            Acciones Disponibles desde el Portal
+                            <span class="step-tag tag-action">Acciones</span>
+                        </h3>
+                        <p>Desde este widget el usuario podrá realizar las siguientes acciones principales, además de navegar por el resto de opciones de Dito:</p>
+                        <div class="step-features">
+                            <div class="step-feature"><span class="feat-icon">📄</span> <strong>Carga de Documentos</strong> — Menú de Finanzas</div>
+                            <div class="step-feature"><span class="feat-icon">🔍</span> <strong>Consulta de Documentos Comerciales</strong> — Menú de Operaciones</div>
+                            <div class="step-feature"><span class="feat-icon">🧭</span> <strong>Navegación libre</strong> — Resto de opciones de Dito</div>
+                        </div>
+                    </div>
+                    <div class="step-image-wrapper">
+                        <div class="step-image-container" onclick="openLightbox(this.querySelector('img').src)">
+                            <img src="img/nuevo widget colaboración .png" alt="Acciones del Portal Proveedores">
+                            <!-- Carga de Documentos highlight -->
+                            <div class="img-overlay highlight highlight-green" style="top:35%;left:0.8%;width:11%;height:5%;border-radius:6px;"></div>
+                            <div class="img-label img-label-green" style="top:31%;left:0.8%;">① Carga de Documentos (Finanzas)</div>
+                            
+                            <!-- Operaciones highlight -->
+                            <div class="img-overlay highlight highlight-amber" style="top:22%;left:0.8%;width:11%;height:10%;border-radius:6px;"></div>
+                            <div class="img-label img-label-amber" style="top:18%;left:0.8%;">② Consulta Docs. Comerciales (Operaciones)</div>
+                            
+                            <!-- Acciones Rápidas -->
+                            <div class="img-overlay highlight highlight-blue" style="top:53%;left:55%;width:42%;height:36%;border-radius:12px;"></div>
+                            <div class="img-label img-label-blue label-bottom" style="top:90%;left:60%;">Acciones Rápidas disponibles</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== FLUJO 2 ===================== -->
+    <section class="flow-section flow-2" id="flow2">
+        <div class="flow-header">
+            <div class="flow-number">FLUJO 2</div>
+            <h2>Grupo Funcional DITO001 + Comunidad GS</h2>
+            <div class="flow-condition">
+                Condición: Servicio = <code>DITO001</code> + <code>Comunidad GS</code>
+            </div>
+        </div>
+
+        <div class="flow-timeline">
+            <!-- Step 1: Login -->
+            <div class="flow-step animate-on-scroll">
+                <div class="step-indicator">1</div>
+                <div class="step-content">
+                    <div class="step-text">
+                        <h3>
+                            <span class="step-icon">🔐</span>
+                            Inicio de Sesión en Dito
+                            <span class="step-tag tag-screen">Pantalla</span>
+                        </h3>
+                        <p>El usuario accede a la pantalla de login de Dito e ingresa sus credenciales. El sistema valida y detecta que su grupo funcional es <strong>DITO001</strong> y pertenece a la <strong>Comunidad GS</strong>.</p>
+                    </div>
+                    <div class="step-image-wrapper">
+                        <div class="step-image-container" onclick="openLightbox(this.querySelector('img').src)">
+                            <img src="img/login dito.png" alt="Login Dito">
+                            <div class="img-overlay highlight highlight-purple" style="top:48%;left:37%;width:27%;height:24%;"></div>
+                            <div class="img-label img-label-purple" style="top:54%;left:38%;">Login con credenciales DITO001 + GS</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 2: Módulo Inicio Nuevo -->
+            <div class="flow-step animate-on-scroll">
+                <div class="step-indicator">2</div>
+                <div class="step-content">
+                    <div class="step-text">
+                        <h3>
+                            <span class="step-icon">🏠</span>
+                            Módulo de Inicio de Dito — Nuevo Diseño
+                            <span class="step-tag tag-screen">Pantalla Principal</span>
+                        </h3>
+                        <p>Al iniciar sesión, se muestra el <strong>módulo de Inicio de Dito con el nuevo diseño</strong>, incluyendo el <strong>contador</strong> de transacciones/plan. Se muestran las secciones de "Acciones prioritarias" (con alertas de Colaboración y Cobranza) y "Acciones rápidas".</p>
+                    </div>
+                    <div class="step-image-wrapper">
+                        <div class="step-image-container" onclick="openLightbox(this.querySelector('img').src)">
+                            <img src="img/nuevo modulo de inicio dito.png" alt="Nuevo Módulo de Inicio Dito">
+                            <!-- Contador highlight -->
+                            <div class="img-overlay highlight highlight-purple" style="top:7%;left:38%;width:36%;height:12%;border-radius:10px;"></div>
+                            <div class="img-label img-label-purple" style="top:3%;left:42%;">Contador de plan/transacciones</div>
+                            
+                            <!-- Acciones Prioritarias -->
+                            <div class="img-overlay highlight highlight-amber" style="top:24%;left:4%;width:48%;height:42%;border-radius:10px;"></div>
+                            <div class="img-label img-label-amber label-bottom" style="top:67%;left:10%;">Acciones prioritarias (Colaboración + Cobranza)</div>
+                            
+                            <!-- Acciones Rápidas -->
+                            <div class="img-overlay highlight highlight-blue" style="top:24%;left:53%;width:44%;height:42%;border-radius:10px;"></div>
+                            <div class="img-label img-label-blue" style="top:20%;left:58%;">Acciones rápidas</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 3: Portal Proveedores en Menú -->
+            <div class="flow-step animate-on-scroll">
+                <div class="step-indicator">3</div>
+                <div class="step-content">
+                    <div class="step-text">
+                        <h3>
+                            <span class="step-icon">📋</span>
+                            Portal Proveedores — Acceso desde Menú
+                            <span class="step-tag tag-menu">Menú</span>
+                        </h3>
+                        <p>El widget de <strong>"Colaboración" (Portal Proveedores)</strong> estará disponible como una <strong>opción dentro del menú de Dito</strong>. El usuario puede acceder a él cuando lo necesite, pero su landing page al iniciar sesión es el módulo de Inicio.</p>
+                        <div class="step-features">
+                            <div class="step-feature"><span class="feat-icon">📌</span> Disponible en el menú lateral de Dito</div>
+                            <div class="step-feature"><span class="feat-icon">🏠</span> Landing page: Módulo de Inicio (nuevo)</div>
+                            <div class="step-feature"><span class="feat-icon">🔄</span> Navegación: Inicio ↔ Portal Proveedores</div>
+                        </div>
+                    </div>
+                    <div class="step-image-wrapper">
+                        <div class="step-image-container" onclick="openLightbox(this.querySelector('img').src)">
+                            <img src="img/nuevo modulo de inicio dito.png" alt="Menú con Portal Proveedores">
+                            <!-- Menú lateral indicando la nueva opción -->
+                            <div class="img-overlay highlight highlight-purple" style="top:22%;left:0%;width:3%;height:68%;border-radius:4px;"></div>
+                            <div class="img-label img-label-purple" style="top:50%;left:3.5%;font-size:11px;">Menú lateral incluye<br>Portal Proveedores</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 4: Vista del Portal (cuando accede) -->
+            <div class="flow-step animate-on-scroll">
+                <div class="step-indicator">4</div>
+                <div class="step-content">
+                    <div class="step-text">
+                        <h3>
+                            <span class="step-icon">📊</span>
+                            Vista del Portal Proveedores (al acceder desde menú)
+                            <span class="step-tag tag-nav">Navegación</span>
+                        </h3>
+                        <p>Al hacer clic en la opción "Portal Proveedores" / "Colaboración" desde el menú, el usuario accede al mismo dashboard con resumen de operación. Desde aquí realizará la <strong>Carga de Documentos (Menú Finanzas)</strong> y la <strong>Consulta de Documentos Comerciales (Menú Operaciones)</strong>.</p>
+                    </div>
+                    <div class="step-image-wrapper">
+                        <div class="step-image-container" onclick="openLightbox(this.querySelector('img').src)">
+                            <img src="img/nuevo widget colaboración .png" alt="Portal Proveedores">
+                            <div class="img-overlay highlight highlight-purple" style="top:10%;left:13%;width:83%;height:81%;border-radius:12px;"></div>
+                            <div class="img-label img-label-purple" style="top:6%;left:30%;">Mismo Portal Proveedores — accesible desde el menú</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== FLUJO 3 ===================== -->
+    <section class="flow-section flow-3" id="flow3">
+        <div class="flow-header">
+            <div class="flow-number">FLUJO 3</div>
+            <h2>Grupo Funcional DITO002 + Comunidad GS</h2>
+            <div class="flow-condition">
+                Condición: Servicio = <code>DITO002</code> + <code>Comunidad GS</code>
+            </div>
+        </div>
+
+        <div class="flow-timeline">
+            <!-- Step 1: Login -->
+            <div class="flow-step animate-on-scroll">
+                <div class="step-indicator">1</div>
+                <div class="step-content">
+                    <div class="step-text">
+                        <h3>
+                            <span class="step-icon">🔐</span>
+                            Inicio de Sesión en Dito
+                            <span class="step-tag tag-screen">Pantalla</span>
+                        </h3>
+                        <p>El usuario accede a la pantalla de login de Dito e ingresa sus credenciales. El sistema valida y detecta que su grupo funcional es <strong>DITO002</strong> y pertenece a la <strong>Comunidad GS</strong>.</p>
+                    </div>
+                    <div class="step-image-wrapper">
+                        <div class="step-image-container" onclick="openLightbox(this.querySelector('img').src)">
+                            <img src="img/login dito.png" alt="Login Dito">
+                            <div class="img-overlay highlight highlight-green" style="top:48%;left:37%;width:27%;height:24%;"></div>
+                            <div class="img-label img-label-green" style="top:54%;left:38%;">Login con credenciales DITO002 + GS</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 2: Módulo Inicio Nuevo (sin contador) -->
+            <div class="flow-step animate-on-scroll">
+                <div class="step-indicator">2</div>
+                <div class="step-content">
+                    <div class="step-text">
+                        <h3>
+                            <span class="step-icon">🏠</span>
+                            Módulo de Inicio de Dito — Nuevo Diseño (sin contador)
+                            <span class="step-tag tag-screen">Pantalla Principal</span>
+                        </h3>
+                        <p>Al iniciar sesión, se despliega el <strong>módulo de Inicio de Dito con el nuevo diseño</strong>, pero <strong>sin el contador</strong> de transacciones/plan. Se muestran las secciones de "Acciones prioritarias" y "Acciones rápidas".</p>
+                        <div class="step-features">
+                            <div class="step-feature"><span class="feat-icon">🏠</span> Módulo de Inicio estándar (nuevo diseño)</div>
+                            <div class="step-feature"><span class="feat-icon">📊</span> Acciones Prioritarias</div>
+                            <div class="step-feature"><span class="feat-icon">⚡</span> Acciones Rápidas</div>
+                            <div class="step-feature"><span class="feat-icon">🚫</span> Sin contador de plan</div>
+                        </div>
+                    </div>
+                    <div class="step-image-wrapper">
+                        <div class="step-image-container" onclick="openLightbox(this.querySelector('img').src)">
+                            <img src="img/nuevo modulo de inicio dito.png" alt="Nuevo Módulo de Inicio Dito">
+                            <!-- Highlight sin contador -->
+                            <div class="img-overlay highlight highlight-red" style="top:7%;left:38%;width:36%;height:12%;border-radius:10px;"></div>
+                            <div class="img-label img-label-red" style="top:3%;left:42%;">❌ Sin contador en este flujo</div>
+                            
+                            <!-- Acciones Prioritarias -->
+                            <div class="img-overlay highlight highlight-green" style="top:24%;left:4%;width:92%;height:42%;border-radius:10px;"></div>
+                            <div class="img-label img-label-green label-bottom" style="top:67%;left:25%;">Módulo de Inicio — Nuevo Diseño</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 3: Portal Proveedores en Menú -->
+            <div class="flow-step animate-on-scroll">
+                <div class="step-indicator">3</div>
+                <div class="step-content">
+                    <div class="step-text">
+                        <h3>
+                            <span class="step-icon">📋</span>
+                            Portal Proveedores — Acceso desde Menú
+                            <span class="step-tag tag-menu">Menú</span>
+                        </h3>
+                        <p>El widget de <strong>"Colaboración" (Portal Proveedores)</strong> estará disponible como una <strong>opción dentro del menú de Dito</strong>. Desde aquí el usuario realizará la <strong>Carga de Documentos (Menú Finanzas)</strong> y la <strong>Consulta de Documentos Comerciales (Menú Operaciones)</strong>.</p>
+                        <div class="step-features">
+                            <div class="step-feature"><span class="feat-icon">📌</span> Disponible en el menú lateral de Dito</div>
+                            <div class="step-feature"><span class="feat-icon">📄</span> Carga de Documentos (Menú Finanzas)</div>
+                            <div class="step-feature"><span class="feat-icon">🔍</span> Consulta Docs. Comerciales (Menú Operaciones)</div>
+                            <div class="step-feature"><span class="feat-icon">🏠</span> Landing page: Módulo de Inicio (nuevo, sin contador)</div>
+                        </div>
+                    </div>
+                    <div class="step-image-wrapper">
+                        <div class="step-image-container" onclick="openLightbox(this.querySelector('img').src)">
+                            <img src="img/nuevo widget colaboración .png" alt="Portal Proveedores">
+                            <div class="img-overlay highlight highlight-green" style="top:10%;left:13%;width:83%;height:81%;border-radius:12px;"></div>
+                            <div class="img-label img-label-green" style="top:6%;left:30%;">Portal Proveedores — accesible desde el menú</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== COMPARATIVA ===================== -->
+    <section class="comparison-section" id="comparison">
+        <h2>Comparativa de Flujos</h2>
+        
+        <div class="comparison-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Característica</th>
+                        <th class="col-flow1">Flujo 1<br><small style="font-weight:400">DITO001</small></th>
+                        <th class="col-flow2">Flujo 2<br><small style="font-weight:400">DITO001 + GS</small></th>
+                        <th class="col-flow3">Flujo 3<br><small style="font-weight:400">DITO002 + GS</small></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Grupo Funcional</td>
+                        <td class="col-flow1">DITO001</td>
+                        <td class="col-flow2">DITO001</td>
+                        <td class="col-flow3">DITO002</td>
+                    </tr>
+                    <tr>
+                        <td>Comunidad GS</td>
+                        <td class="col-flow1"><span class="cross">✕ No</span></td>
+                        <td class="col-flow2"><span class="check">✓ Sí</span></td>
+                        <td class="col-flow3"><span class="check">✓ Sí</span></td>
+                    </tr>
+                    <tr>
+                        <td>Pantalla al iniciar sesión</td>
+                        <td class="col-flow1"><strong>Portal Proveedores</strong><br>(Widget Colaboración)</td>
+                        <td class="col-flow2"><strong>Módulo de Inicio</strong><br>(Nuevo diseño + contador)</td>
+                        <td class="col-flow3"><strong>Módulo de Inicio</strong><br>(Nuevo diseño, sin contador)</td>
+                    </tr>
+                    <tr>
+                        <td>Módulo de Inicio visible</td>
+                        <td class="col-flow1"><span class="cross">✕ No es la landing</span></td>
+                        <td class="col-flow2"><span class="check">✓ Sí (landing page)</span></td>
+                        <td class="col-flow3"><span class="check">✓ Sí (landing page)</span></td>
+                    </tr>
+                    <tr>
+                        <td>Widget Colaboración / Portal Proveedores</td>
+                        <td class="col-flow1"><span class="check">✓ Pantalla principal</span></td>
+                        <td class="col-flow2"><span class="check">✓ En menú de Dito</span></td>
+                        <td class="col-flow3"><span class="check">✓ En menú de Dito</span></td>
+                    </tr>
+                    <tr>
+                        <td>Contador de plan</td>
+                        <td class="col-flow1"><span class="cross">✕ No</span></td>
+                        <td class="col-flow2"><span class="check">✓ Sí</span></td>
+                        <td class="col-flow3"><span class="cross">✕ No</span></td>
+                    </tr>
+                    <tr>
+                        <td>Carga de Documentos</td>
+                        <td class="col-flow1"><span class="check">✓ Desde Portal Proveedores<br>(Menú Finanzas)</span></td>
+                        <td class="col-flow2"><span class="check">✓ Desde Portal Proveedores<br>(Menú Finanzas)</span></td>
+                        <td class="col-flow3"><span class="check">✓ Desde Portal Proveedores<br>(Menú Finanzas)</span></td>
+                    </tr>
+                    <tr>
+                        <td>Consulta Docs. Comerciales</td>
+                        <td class="col-flow1"><span class="check">✓ Desde Portal Proveedores<br>(Menú Operaciones)</span></td>
+                        <td class="col-flow2"><span class="check">✓ Desde Portal Proveedores<br>(Menú Operaciones)</span></td>
+                        <td class="col-flow3"><span class="check">✓ Desde Portal Proveedores<br>(Menú Operaciones)</span></td>
+                    </tr>
+                    <tr>
+                        <td>Navegación resto de Dito</td>
+                        <td class="col-flow1"><span class="check">✓ Sí</span></td>
+                        <td class="col-flow2"><span class="check">✓ Sí</span></td>
+                        <td class="col-flow3"><span class="check">✓ Sí</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Reference Images Grid -->
+        <div style="max-width:1000px;margin:60px auto 0;text-align:center;">
+            <h3 style="font-size:20px;font-weight:600;margin-bottom:24px;color:#e2e8f0;">Pantallas de Referencia</h3>
+            <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:20px;">
+                <div style="background:rgba(30,41,59,0.6);border:1px solid rgba(100,116,139,0.15);border-radius:16px;overflow:hidden;cursor:pointer;" onclick="openLightbox(this.querySelector('img').src)">
+                    <img src="img/login dito.png" alt="Login" style="width:100%;display:block;">
+                    <div style="padding:12px 16px;font-size:13px;font-weight:600;color:#94a3b8;">Login de Dito</div>
+                </div>
+                <div style="background:rgba(30,41,59,0.6);border:1px solid rgba(100,116,139,0.15);border-radius:16px;overflow:hidden;cursor:pointer;" onclick="openLightbox(this.querySelector('img').src)">
+                    <img src="img/modulo de inicio dito actual.png" alt="Inicio Actual" style="width:100%;display:block;">
+                    <div style="padding:12px 16px;font-size:13px;font-weight:600;color:#94a3b8;">Módulo de Inicio Actual (referencia)</div>
+                </div>
+                <div style="background:rgba(30,41,59,0.6);border:1px solid rgba(100,116,139,0.15);border-radius:16px;overflow:hidden;cursor:pointer;" onclick="openLightbox(this.querySelector('img').src)">
+                    <img src="img/nuevo modulo de inicio dito.png" alt="Nuevo Inicio" style="width:100%;display:block;">
+                    <div style="padding:12px 16px;font-size:13px;font-weight:600;color:#94a3b8;">Nuevo Módulo de Inicio (Flujos 2 y 3)</div>
+                </div>
+                <div style="background:rgba(30,41,59,0.6);border:1px solid rgba(100,116,139,0.15);border-radius:16px;overflow:hidden;cursor:pointer;" onclick="openLightbox(this.querySelector('img').src)">
+                    <img src="img/nuevo widget colaboración .png" alt="Portal Proveedores" style="width:100%;display:block;">
+                    <div style="padding:12px 16px;font-size:13px;font-weight:600;color:#94a3b8;">Widget Colaboración / Portal Proveedores (Flujos 1, 2 y 3)</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LIGHTBOX -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Vista ampliada">
+    </div>
+
+    <!-- BACK TO TOP -->
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()">↑</button>
+
+    <script>
+        // ========== SECTION NAVIGATION ==========
+        function showSection(sectionId) {
+            // Hide all
+            document.getElementById('hero').style.display = 'none';
+            document.querySelectorAll('.flow-section').forEach(s => s.classList.remove('active'));
+            document.querySelector('.comparison-section').classList.remove('active');
+
+            // Show selected
+            if (sectionId === 'hero') {
+                document.getElementById('hero').style.display = 'flex';
+            } else if (sectionId === 'comparison') {
+                document.querySelector('.comparison-section').classList.add('active');
+            } else {
+                document.getElementById(sectionId).classList.add('active');
+            }
+
+            // Update nav
+            document.querySelectorAll('.header-nav button').forEach(btn => btn.classList.remove('active'));
+            const navMap = { hero: 0, flow1: 1, flow2: 2, flow3: 3, comparison: 4 };
+            document.querySelectorAll('.header-nav button')[navMap[sectionId]].classList.add('active');
+
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            // Trigger step animations
+            setTimeout(() => {
+                document.querySelectorAll('.flow-section.active .animate-on-scroll').forEach((el, i) => {
+                    setTimeout(() => el.classList.add('visible'), i * 200);
+                });
+            }, 100);
+        }
+
+        // ========== LIGHTBOX ==========
+        function openLightbox(src) {
+            document.getElementById('lightbox-img').src = src;
+            document.getElementById('lightbox').classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+
+        // ========== SCROLL ANIMATIONS ==========
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+
+        // ========== BACK TO TOP ==========
+        window.addEventListener('scroll', () => {
+            const btn = document.getElementById('backToTop');
+            if (window.scrollY > 400) {
+                btn.classList.add('show');
+            } else {
+                btn.classList.remove('show');
+            }
+        });
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // ========== KEYBOARD NAVIGATION ==========
+        document.addEventListener('keydown', e => {
+            const sections = ['hero', 'flow1', 'flow2', 'flow3', 'comparison'];
+            const activeNav = document.querySelector('.header-nav button.active');
+            const currentIdx = Array.from(document.querySelectorAll('.header-nav button')).indexOf(activeNav);
+            
+            if (e.key === 'ArrowRight' && currentIdx < sections.length - 1) {
+                showSection(sections[currentIdx + 1]);
+            } else if (e.key === 'ArrowLeft' && currentIdx > 0) {
+                showSection(sections[currentIdx - 1]);
+            }
+        });
+    </script>
+</body>
+</html>
