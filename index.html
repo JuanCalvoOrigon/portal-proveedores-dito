@@ -884,11 +884,11 @@
             <span>📋</span> Documento de Diseño Funcional
         </div>
         <h1>Flujos de Inicio de Sesión<br>en <em>Dito</em></h1>
-        <p>Definición de los tres flujos de experiencia al iniciar sesión en Dito, según el grupo funcional del usuario y su comunidad asociada.</p>
+        <p>Definición de los tres flujos de experiencia de los proveedores dentro de Dito, según el grupo funcional del usuario y su comunidad asociada.</p>
 
         <!-- Flowchart Diagram -->
         <div class="diagram-container" style="margin-top:20px; width:100%; max-width:900px;">
-            <h3>Diagrama de Decisión — Login en Dito</h3>
+            <h3>Diagrama de Decisión — Flujo de proveedores</h3>
             <div class="flowchart">
                 <div class="fc-node fc-node-login">🔐 Usuario inicia sesión en Dito</div>
                 <div class="fc-arrow"><div class="fc-line"></div><div class="fc-arrowhead"></div></div>
@@ -896,7 +896,7 @@
                 <div class="fc-arrow" style="height:24px"><div class="fc-line"></div><div class="fc-arrowhead"></div></div>
                 <div class="fc-branches">
                     <div class="fc-branch">
-                        <div class="fc-branch-label fc-branch-label-1">DITO001 (solo)</div>
+                        <div class="fc-branch-label fc-branch-label-1">DITO001 (no GS)</div>
                         <div class="fc-arrow" style="height:24px"><div class="fc-line"></div><div class="fc-arrowhead"></div></div>
                         <div class="fc-node fc-node-result-1" style="cursor:pointer" onclick="showSection('flow1')">
                             → Widget Colaboración<br><small style="font-weight:400;font-size:12px">(Portal Proveedores)</small>
@@ -1008,16 +1008,16 @@
                         <div class="step-image-container" onclick="openLightbox(this.querySelector('img').src)">
                             <img src="img/nuevo widget colaboración .png" alt="Portal Proveedores - Widget Colaboración">
                             <!-- KPIs highlight -->
-                            <div class="img-overlay highlight highlight-blue" style="top:27%;left:13%;width:83%;height:17%;border-radius:12px;"></div>
-                            <div class="img-label img-label-blue" style="top:22%;left:30%;">Resumen de operación: KPIs principales</div>
+                            <div class="img-overlay highlight highlight-blue" style="top:31%;left:14%;width:84%;height:17%;border-radius:12px;"></div>
+                            <div class="img-label img-label-blue" style="top:26%;left:35%;">Resumen de operación: KPIs principales</div>
                             
                             <!-- Sidebar Operaciones -->
-                            <div class="img-overlay highlight highlight-amber" style="top:21%;left:0.5%;width:12%;height:12%;border-radius:8px;"></div>
-                            <div class="img-label img-label-amber" style="top:17%;left:1%;">Menú Operaciones</div>
+                            <div class="img-overlay highlight highlight-green" style="top:23%;left:0%;width:13%;height:13%;border-radius:8px;"></div>
+                            <div class="img-label img-label-green" style="top:19%;left:0.5%;">Consulta Docs. Comerciales (Operaciones)</div>
                             
                             <!-- Sidebar Finanzas -->
-                            <div class="img-overlay highlight highlight-green" style="top:35%;left:0.5%;width:12%;height:15%;border-radius:8px;"></div>
-                            <div class="img-label img-label-green" style="top:51%;left:1%;">Menú Finanzas</div>
+                            <div class="img-overlay highlight highlight-amber" style="top:37%;left:0%;width:13%;height:16%;border-radius:8px;"></div>
+                            <div class="img-label img-label-amber" style="top:54%;left:0.5%;">Carga de Documentos (Finanzas)</div>
                         </div>
                     </div>
                 </div>
@@ -1043,17 +1043,17 @@
                     <div class="step-image-wrapper">
                         <div class="step-image-container" onclick="openLightbox(this.querySelector('img').src)">
                             <img src="img/nuevo widget colaboración .png" alt="Acciones del Portal Proveedores">
-                            <!-- Carga de Documentos highlight -->
-                            <div class="img-overlay highlight highlight-green" style="top:35%;left:0.8%;width:11%;height:5%;border-radius:6px;"></div>
-                            <div class="img-label img-label-green" style="top:31%;left:0.8%;">① Carga de Documentos (Finanzas)</div>
-                            
                             <!-- Operaciones highlight -->
-                            <div class="img-overlay highlight highlight-amber" style="top:22%;left:0.8%;width:11%;height:10%;border-radius:6px;"></div>
-                            <div class="img-label img-label-amber" style="top:18%;left:0.8%;">② Consulta Docs. Comerciales (Operaciones)</div>
+                            <div class="img-overlay highlight highlight-green" style="top:23%;left:0%;width:13%;height:13%;border-radius:8px;"></div>
+                            <div class="img-label img-label-green" style="top:19%;left:0.5%;">① Consulta Docs. Comerciales (Operaciones)</div>
+                            
+                            <!-- Carga de Documentos highlight -->
+                            <div class="img-overlay highlight highlight-amber" style="top:37%;left:0%;width:13%;height:7%;border-radius:8px;"></div>
+                            <div class="img-label img-label-amber" style="top:45%;left:0.5%;">② Carga de Documentos (Finanzas)</div>
                             
                             <!-- Acciones Rápidas -->
-                            <div class="img-overlay highlight highlight-blue" style="top:53%;left:55%;width:42%;height:36%;border-radius:12px;"></div>
-                            <div class="img-label img-label-blue label-bottom" style="top:90%;left:60%;">Acciones Rápidas disponibles</div>
+                            <div class="img-overlay highlight highlight-blue" style="top:52%;left:70%;width:28%;height:30%;border-radius:12px;"></div>
+                            <div class="img-label img-label-blue label-bottom" style="top:83%;left:72%;">Acciones Rápidas disponibles</div>
                         </div>
                     </div>
                 </div>
@@ -1168,8 +1168,15 @@
                     <div class="step-image-wrapper">
                         <div class="step-image-container" onclick="openLightbox(this.querySelector('img').src)">
                             <img src="img/nuevo widget colaboración .png" alt="Portal Proveedores">
-                            <div class="img-overlay highlight highlight-purple" style="top:10%;left:13%;width:83%;height:81%;border-radius:12px;"></div>
-                            <div class="img-label img-label-purple" style="top:6%;left:30%;">Mismo Portal Proveedores — accesible desde el menú</div>
+                            <!-- Operaciones -->
+                            <div class="img-overlay highlight highlight-green" style="top:23%;left:0%;width:13%;height:13%;border-radius:8px;"></div>
+                            <div class="img-label img-label-green" style="top:19%;left:0.5%;">Consulta Docs. Comerciales (Operaciones)</div>
+                            <!-- Finanzas -->
+                            <div class="img-overlay highlight highlight-amber" style="top:37%;left:0%;width:13%;height:7%;border-radius:8px;"></div>
+                            <div class="img-label img-label-amber" style="top:45%;left:0.5%;">Carga de Documentos (Finanzas)</div>
+                            <!-- Acciones Rápidas -->
+                            <div class="img-overlay highlight highlight-blue" style="top:52%;left:70%;width:28%;height:30%;border-radius:12px;"></div>
+                            <div class="img-label img-label-blue label-bottom" style="top:83%;left:72%;">Acciones Rápidas disponibles</div>
                         </div>
                     </div>
                 </div>
@@ -1264,8 +1271,15 @@
                     <div class="step-image-wrapper">
                         <div class="step-image-container" onclick="openLightbox(this.querySelector('img').src)">
                             <img src="img/nuevo widget colaboración .png" alt="Portal Proveedores">
-                            <div class="img-overlay highlight highlight-green" style="top:10%;left:13%;width:83%;height:81%;border-radius:12px;"></div>
-                            <div class="img-label img-label-green" style="top:6%;left:30%;">Portal Proveedores — accesible desde el menú</div>
+                            <!-- Operaciones -->
+                            <div class="img-overlay highlight highlight-green" style="top:23%;left:0%;width:13%;height:13%;border-radius:8px;"></div>
+                            <div class="img-label img-label-green" style="top:19%;left:0.5%;">Consulta Docs. Comerciales (Operaciones)</div>
+                            <!-- Finanzas -->
+                            <div class="img-overlay highlight highlight-amber" style="top:37%;left:0%;width:13%;height:7%;border-radius:8px;"></div>
+                            <div class="img-label img-label-amber" style="top:45%;left:0.5%;">Carga de Documentos (Finanzas)</div>
+                            <!-- Acciones Rápidas -->
+                            <div class="img-overlay highlight highlight-blue" style="top:52%;left:70%;width:28%;height:30%;border-radius:12px;"></div>
+                            <div class="img-label img-label-blue label-bottom" style="top:83%;left:72%;">Acciones Rápidas disponibles</div>
                         </div>
                     </div>
                 </div>
