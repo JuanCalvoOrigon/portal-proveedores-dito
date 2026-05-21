@@ -869,7 +869,7 @@
             </svg>
             <div>
                 <span>Dito — Portal Proveedores</span>
-                <div class="header-subtitle">Flujos de Inicio de Sesión</div>
+                <div class="header-subtitle">Propuesta de Experiencia de Usuario</div>
             </div>
         </div>
         <nav class="header-nav">
@@ -884,18 +884,45 @@
     <!-- HERO -->
     <section class="hero" id="hero">
         <div class="hero-badge">
-            <span>📋</span> Documento de Diseño Funcional
+            <span>�</span> Propuesta de Experiencia — Portal Proveedores
         </div>
-        <h1>Flujos de Inicio de Sesión<br>en <em>Dito</em></h1>
-        <p>Definición de los tres flujos de experiencia de los proveedores dentro de Dito, según el grupo funcional del usuario y su comunidad asociada.</p>
+        <h1>Experiencia Personalizada<br>para <em>Proveedores en Dito</em></h1>
+        <p>Proponemos diferenciar la experiencia de inicio de sesión en Dito según el tipo de proveedor, para que cada usuario acceda directamente a las herramientas que necesita, reduciendo fricción y mejorando la eficiencia operativa.</p>
+
+        <!-- Executive Summary -->
+        <div style="display:flex;gap:20px;margin-top:8px;margin-bottom:12px;">
+            <div style="background:rgba(14,165,233,0.1);border:1px solid rgba(14,165,233,0.2);border-radius:12px;padding:16px 24px;text-align:center;min-width:160px;">
+                <div style="font-size:28px;font-weight:800;color:#38bdf8;">3</div>
+                <div style="font-size:12px;color:#94a3b8;margin-top:4px;">Flujos diferenciados</div>
+            </div>
+            <div style="background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.2);border-radius:12px;padding:16px 24px;text-align:center;min-width:160px;">
+                <div style="font-size:28px;font-weight:800;color:#34d399;">1</div>
+                <div style="font-size:12px;color:#94a3b8;margin-top:4px;">Nuevo Portal Proveedores</div>
+            </div>
+            <div style="background:rgba(139,92,246,0.1);border:1px solid rgba(139,92,246,0.2);border-radius:12px;padding:16px 24px;text-align:center;min-width:160px;">
+                <div style="font-size:28px;font-weight:800;color:#a78bfa;">1</div>
+                <div style="font-size:12px;color:#94a3b8;margin-top:4px;">Nuevo Módulo de Inicio</div>
+            </div>
+        </div>
+
+        <!-- Objective box -->
+        <div style="max-width:700px;background:rgba(30,41,59,0.8);border:1px solid rgba(100,116,139,0.2);border-radius:16px;padding:24px 28px;margin-bottom:24px;text-align:left;">
+            <div style="font-size:13px;font-weight:600;color:#38bdf8;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">🎯 Objetivo</div>
+            <p style="font-size:14px;color:#cbd5e1;line-height:1.7;margin-bottom:12px;">Cuando un proveedor inicia sesión en Dito, el sistema identifica su <strong style="color:#f1f5f9;">grupo funcional</strong> y <strong style="color:#f1f5f9;">comunidad</strong> para mostrarle automáticamente la experiencia más adecuada a su operación:</p>
+            <ul style="font-size:14px;color:#94a3b8;line-height:2;padding-left:20px;">
+                <li><strong style="color:#38bdf8;">Proveedores DITO001</strong> → Acceso directo al Portal de Proveedores</li>
+                <li><strong style="color:#a78bfa;">Proveedores DITO001 + Comunidad GS</strong> → Módulo de Inicio renovado + Portal en menú</li>
+                <li><strong style="color:#34d399;">Proveedores DITO002 + Comunidad GS</strong> → Módulo de Inicio renovado (sin contador) + Portal en menú</li>
+            </ul>
+        </div>
 
         <!-- Flowchart Diagram -->
         <div class="diagram-container" style="margin-top:20px; width:100%; max-width:900px;">
-            <h3>Diagrama de Decisión — Flujo de proveedores</h3>
+            <h3>Diagrama de Decisión — ¿Qué ve cada proveedor al iniciar sesión?</h3>
             <div class="flowchart">
-                <div class="fc-node fc-node-login">🔐 Usuario inicia sesión en Dito</div>
+                <div class="fc-node fc-node-login">🔐 Proveedor inicia sesión en Dito</div>
                 <div class="fc-arrow"><div class="fc-line"></div><div class="fc-arrowhead"></div></div>
-                <div class="fc-node fc-node-decision">¿Grupo Funcional + Comunidad?</div>
+                <div class="fc-node fc-node-decision">¿Qué tipo de proveedor es?</div>
                 <div class="fc-arrow" style="height:24px"><div class="fc-line"></div><div class="fc-arrowhead"></div></div>
                 <div class="fc-branches">
                     <div class="fc-branch">
@@ -926,18 +953,18 @@
         <div class="hero-cards">
             <div class="hero-card" onclick="showSection('flow1')">
                 <div class="card-flow-num">F1</div>
-                <h3>Flujo 1 — DITO001</h3>
-                <p>Redirección directa al Portal Proveedores (Widget Colaboración)</p>
+                <h3>Proveedor Exclusivo</h3>
+                <p>DITO001 — Accede directo al Portal Proveedores como pantalla principal</p>
             </div>
             <div class="hero-card" onclick="showSection('flow2')">
                 <div class="card-flow-num">F2</div>
-                <h3>Flujo 2 — DITO001 + GS</h3>
-                <p>Módulo Inicio nuevo con acceso a Portal Proveedores desde menú</p>
+                <h3>Proveedor + Comunidad GS</h3>
+                <p>DITO001 + GS — Ve el nuevo Inicio de Dito y accede al Portal desde el menú</p>
             </div>
             <div class="hero-card" onclick="showSection('flow3')">
                 <div class="card-flow-num">F3</div>
-                <h3>Flujo 3 — DITO002 + GS</h3>
-                <p>Módulo de Inicio (sin contador) con Portal Proveedores en menú</p>
+                <h3>Proveedor GS Estándar</h3>
+                <p>DITO002 + GS — Ve el nuevo Inicio (sin contador) y accede al Portal desde el menú</p>
             </div>
         </div>
     </section>
@@ -945,10 +972,10 @@
     <!-- ===================== FLUJO 1 ===================== -->
     <section class="flow-section flow-1" id="flow1">
         <div class="flow-header">
-            <div class="flow-number">FLUJO 1</div>
-            <h2>Grupo Funcional DITO001</h2>
+            <div class="flow-number">FLUJO 1 — PROVEEDOR EXCLUSIVO</div>
+            <h2>Acceso directo al Portal de Proveedores</h2>
             <div class="flow-condition">
-                Condición: Servicio = <code>DITO001</code> &nbsp;(sin Comunidad GS)
+                Aplica cuando: Grupo Funcional = <code>DITO001</code> &nbsp;sin Comunidad GS
             </div>
         </div>
 
@@ -963,7 +990,7 @@
                             Inicio de Sesión en Dito
                             <span class="step-tag tag-screen">Pantalla</span>
                         </h3>
-                        <p>El usuario accede a la pantalla de login de Dito e ingresa sus credenciales (correo y contraseña). El sistema valida las credenciales y detecta que su grupo funcional es <strong>DITO001</strong>.</p>
+                        <p>El proveedor inicia sesión en Dito con su correo y contraseña. El sistema identifica automáticamente que pertenece al grupo <strong>DITO001</strong> y determina su experiencia.</p>
                     </div>
                     <div class="step-image-wrapper">
                         <div class="step-image-container" onclick="openLightbox(this.querySelector('img').src)">
@@ -985,7 +1012,7 @@
                             Redirección Automática
                             <span class="step-tag tag-redirect">Redirección</span>
                         </h3>
-                        <p>Al iniciar sesión, el sistema <strong>NO muestra el módulo de Inicio estándar de Dito</strong>. En su lugar, el usuario es redirigido automáticamente al nuevo <strong>Widget de Colaboración (Portal Proveedores)</strong>.</p>
+                        <p>Al iniciar sesión, el sistema <strong>omite el módulo de Inicio tradicional</strong> y lleva al proveedor directamente a su herramienta principal: el <strong>Portal de Proveedores</strong>. Esto elimina pasos innecesarios y le da acceso inmediato a su operación.</p>
                         <div class="step-features">
                             <div class="step-feature"><span class="feat-icon">⚡</span> Redirección automática</div>
                             <div class="step-feature"><span class="feat-icon">🚫</span> No se muestra el módulo de Inicio</div>
@@ -1005,7 +1032,7 @@
                             Widget de Colaboración — Portal Proveedores
                             <span class="step-tag tag-screen">Pantalla Principal</span>
                         </h3>
-                        <p>El usuario aterriza en el <strong>Portal de Proveedores</strong> donde puede visualizar un resumen completo de su operación: saldos pendientes, documentos en proceso de pago, órdenes de compra abiertas y elementos que requieren atención.</p>
+                        <p>El proveedor aterriza en su <strong>Panel de Control</strong> donde ve de un vistazo: saldo pendiente, pagos en proceso, órdenes de compra abiertas y documentos que requieren su atención.</p>
                     </div>
                     <div class="step-image-wrapper">
                         <div class="step-image-container" onclick="openLightbox(this.querySelector('img').src)">
@@ -1036,7 +1063,7 @@
                             Acciones Disponibles desde el Portal
                             <span class="step-tag tag-action">Acciones</span>
                         </h3>
-                        <p>Desde este widget el usuario podrá realizar las siguientes acciones principales, además de navegar por el resto de opciones de Dito:</p>
+                        <p>Desde el Portal, el proveedor accede a las funciones clave de su operación diaria sin necesidad de navegar por múltiples menús:</p>
                         <div class="step-features">
                             <div class="step-feature"><span class="feat-icon">📄</span> <strong>Carga de Documentos</strong> — Menú de Finanzas</div>
                             <div class="step-feature"><span class="feat-icon">🔍</span> <strong>Consulta de Documentos Comerciales</strong> — Menú de Operaciones</div>
@@ -1067,10 +1094,10 @@
     <!-- ===================== FLUJO 2 ===================== -->
     <section class="flow-section flow-2" id="flow2">
         <div class="flow-header">
-            <div class="flow-number">FLUJO 2</div>
-            <h2>Grupo Funcional DITO001 + Comunidad GS</h2>
+            <div class="flow-number">FLUJO 2 — PROVEEDOR + COMUNIDAD GS</div>
+            <h2>Inicio renovado + Portal en menú</h2>
             <div class="flow-condition">
-                Condición: Servicio = <code>DITO001</code> + <code>Comunidad GS</code>
+                Aplica cuando: Grupo Funcional = <code>DITO001</code> + <code>Comunidad GS</code>
             </div>
         </div>
 
@@ -1085,7 +1112,7 @@
                             Inicio de Sesión en Dito
                             <span class="step-tag tag-screen">Pantalla</span>
                         </h3>
-                        <p>El usuario accede a la pantalla de login de Dito e ingresa sus credenciales. El sistema valida y detecta que su grupo funcional es <strong>DITO001</strong> y pertenece a la <strong>Comunidad GS</strong>.</p>
+                        <p>El proveedor inicia sesión en Dito. El sistema identifica que pertenece al grupo <strong>DITO001</strong> y a la <strong>Comunidad GS</strong>, activando la experiencia correspondiente.</p>
                     </div>
                     <div class="step-image-wrapper">
                         <div class="step-image-container" onclick="openLightbox(this.querySelector('img').src)">
@@ -1107,7 +1134,7 @@
                             Módulo de Inicio de Dito — Nuevo Diseño
                             <span class="step-tag tag-screen">Pantalla Principal</span>
                         </h3>
-                        <p>Al iniciar sesión, se muestra el <strong>módulo de Inicio de Dito con el nuevo diseño</strong>, incluyendo el <strong>contador</strong> de transacciones/plan. Se muestran las secciones de "Acciones prioritarias" (con alertas de Colaboración y Cobranza) y "Acciones rápidas".</p>
+                        <p>Se despliega el <strong>nuevo módulo de Inicio de Dito</strong> con un diseño renovado que incluye el <strong>contador de transacciones y plan contratado</strong>, junto con secciones de alertas prioritarias y acciones rápidas para agilizar la operación.</p>
                     </div>
                     <div class="step-image-wrapper">
                         <div class="step-image-container" onclick="openLightbox(this.querySelector('img').src)">
@@ -1138,7 +1165,7 @@
                             Portal Proveedores — Acceso desde Menú
                             <span class="step-tag tag-menu">Menú</span>
                         </h3>
-                        <p>El widget de <strong>"Colaboración" (Portal Proveedores)</strong> estará disponible como una <strong>opción dentro del menú de Dito</strong>. El usuario puede acceder a él cuando lo necesite, pero su landing page al iniciar sesión es el módulo de Inicio.</p>
+                        <p>El <strong>Portal de Proveedores</strong> está disponible como <strong>opción en el menú lateral</strong> de Dito. El proveedor puede acceder a él cuando lo necesite, mientras su pantalla principal sigue siendo el Módulo de Inicio.</p>
                         <div class="step-features">
                             <div class="step-feature"><span class="feat-icon">📌</span> Disponible en el menú lateral de Dito</div>
                             <div class="step-feature"><span class="feat-icon">🏠</span> Landing page: Módulo de Inicio (nuevo)</div>
@@ -1166,7 +1193,7 @@
                             Vista del Portal Proveedores (al acceder desde menú)
                             <span class="step-tag tag-nav">Navegación</span>
                         </h3>
-                        <p>Al hacer clic en la opción "Portal Proveedores" / "Colaboración" desde el menú, el usuario accede al mismo dashboard con resumen de operación. Desde aquí realizará la <strong>Carga de Documentos (Menú Finanzas)</strong> y la <strong>Consulta de Documentos Comerciales (Menú Operaciones)</strong>.</p>
+                        <p>Al navegar al Portal de Proveedores desde el menú, el proveedor accede al mismo panel con resumen de operación. Desde aquí realiza la <strong>Carga de Documentos (Finanzas)</strong> y la <strong>Consulta de Documentos Comerciales (Operaciones)</strong>.</p>
                     </div>
                     <div class="step-image-wrapper">
                         <div class="step-image-container" onclick="openLightbox(this.querySelector('img').src)">
@@ -1190,10 +1217,10 @@
     <!-- ===================== FLUJO 3 ===================== -->
     <section class="flow-section flow-3" id="flow3">
         <div class="flow-header">
-            <div class="flow-number">FLUJO 3</div>
-            <h2>Grupo Funcional DITO002 + Comunidad GS</h2>
+            <div class="flow-number">FLUJO 3 — PROVEEDOR GS ESTÁNDAR</div>
+            <h2>Inicio renovado (sin contador) + Portal en menú</h2>
             <div class="flow-condition">
-                Condición: Servicio = <code>DITO002</code> + <code>Comunidad GS</code>
+                Aplica cuando: Grupo Funcional = <code>DITO002</code> + <code>Comunidad GS</code>
             </div>
         </div>
 
@@ -1208,7 +1235,7 @@
                             Inicio de Sesión en Dito
                             <span class="step-tag tag-screen">Pantalla</span>
                         </h3>
-                        <p>El usuario accede a la pantalla de login de Dito e ingresa sus credenciales. El sistema valida y detecta que su grupo funcional es <strong>DITO002</strong> y pertenece a la <strong>Comunidad GS</strong>.</p>
+                        <p>El proveedor inicia sesión en Dito. El sistema identifica que pertenece al grupo <strong>DITO002</strong> y a la <strong>Comunidad GS</strong>, activando su experiencia correspondiente.</p>
                     </div>
                     <div class="step-image-wrapper">
                         <div class="step-image-container" onclick="openLightbox(this.querySelector('img').src)">
@@ -1230,7 +1257,7 @@
                             Módulo de Inicio de Dito — Nuevo Diseño (sin contador)
                             <span class="step-tag tag-screen">Pantalla Principal</span>
                         </h3>
-                        <p>Al iniciar sesión, se despliega el <strong>módulo de Inicio de Dito con el nuevo diseño</strong>, pero <strong>sin el contador</strong> de transacciones/plan. Se muestran las secciones de "Acciones prioritarias" y "Acciones rápidas".</p>
+                        <p>Se despliega el <strong>nuevo módulo de Inicio de Dito</strong> con el diseño renovado, pero <strong>sin el contador de plan</strong>. El proveedor ve sus alertas prioritarias y acciones rápidas disponibles.</p>
                         <div class="step-features">
                             <div class="step-feature"><span class="feat-icon">🏠</span> Módulo de Inicio estándar (nuevo diseño)</div>
                             <div class="step-feature"><span class="feat-icon">📊</span> Acciones Prioritarias</div>
@@ -1267,7 +1294,7 @@
                             Portal Proveedores — Acceso desde Menú
                             <span class="step-tag tag-menu">Menú</span>
                         </h3>
-                        <p>El widget de <strong>"Colaboración" (Portal Proveedores)</strong> estará disponible como una <strong>opción dentro del menú de Dito</strong>. Desde aquí el usuario realizará la <strong>Carga de Documentos (Menú Finanzas)</strong> y la <strong>Consulta de Documentos Comerciales (Menú Operaciones)</strong>.</p>
+                        <p>El <strong>Portal de Proveedores</strong> est\u00e1 disponible en el <strong>men\u00fa lateral de Dito</strong>. Desde all\u00ed el proveedor realiza la <strong>Carga de Documentos (Finanzas)</strong> y la <strong>Consulta de Documentos Comerciales (Operaciones)</strong>.</p>
                         <div class="step-features">
                             <div class="step-feature"><span class="feat-icon">📌</span> Disponible en el menú lateral de Dito</div>
                             <div class="step-feature"><span class="feat-icon">📄</span> Carga de Documentos (Menú Finanzas)</div>
@@ -1296,16 +1323,17 @@
 
     <!-- ===================== COMPARATIVA ===================== -->
     <section class="comparison-section" id="comparison">
-        <h2>Comparativa de Flujos</h2>
+        <h2>Comparativa de los 3 Flujos</h2>
+        <p style="text-align:center;color:#94a3b8;font-size:15px;margin-top:-24px;margin-bottom:36px;">Resumen lado a lado de lo que experimenta cada tipo de proveedor al iniciar sesión en Dito</p>
         
         <div class="comparison-table">
             <table>
                 <thead>
                     <tr>
                         <th>Característica</th>
-                        <th class="col-flow1">Flujo 1<br><small style="font-weight:400">DITO001</small></th>
-                        <th class="col-flow2">Flujo 2<br><small style="font-weight:400">DITO001 + GS</small></th>
-                        <th class="col-flow3">Flujo 3<br><small style="font-weight:400">DITO002 + GS</small></th>
+                        <th class="col-flow1">Flujo 1<br><small style="font-weight:400">Proveedor Exclusivo<br>(DITO001)</small></th>
+                        <th class="col-flow2">Flujo 2<br><small style="font-weight:400">Proveedor + GS<br>(DITO001 + GS)</small></th>
+                        <th class="col-flow3">Flujo 3<br><small style="font-weight:400">Proveedor GS Estándar<br>(DITO002 + GS)</small></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -1386,6 +1414,38 @@
                 <div style="background:rgba(30,41,59,0.6);border:1px solid rgba(100,116,139,0.15);border-radius:16px;overflow:hidden;cursor:pointer;" onclick="openLightbox(this.querySelector('img').src)">
                     <img src="img/nuevo widget colaboración .png" alt="Portal Proveedores" style="width:100%;display:block;">
                     <div style="padding:12px 16px;font-size:13px;font-weight:600;color:#94a3b8;">Widget Colaboración / Portal Proveedores (Flujos 1, 2 y 3)</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Próximos Pasos -->
+        <div style="max-width:1000px;margin:60px auto 0;">
+            <div style="background:linear-gradient(135deg,rgba(14,165,233,0.08),rgba(99,102,241,0.08));border:1px solid rgba(56,189,248,0.2);border-radius:20px;padding:36px 40px;">
+                <h3 style="font-size:20px;font-weight:700;color:#f1f5f9;margin-bottom:20px;display:flex;align-items:center;gap:10px;">
+                    <span style="font-size:24px;">📌</span> Próximos Pasos
+                </h3>
+                <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;">
+                    <div style="display:flex;align-items:flex-start;gap:12px;padding:16px;background:rgba(15,23,42,0.5);border-radius:12px;border:1px solid rgba(100,116,139,0.1);">
+                        <div style="flex-shrink:0;width:32px;height:32px;border-radius:8px;background:rgba(14,165,233,0.15);color:#38bdf8;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;">1</div>
+                        <div>
+                            <div style="font-size:14px;font-weight:600;color:#e2e8f0;">Validación de flujos</div>
+                            <div style="font-size:13px;color:#94a3b8;margin-top:4px;">Confirmar los 3 flujos propuestos con el equipo de producto</div>
+                        </div>
+                    </div>
+                    <div style="display:flex;align-items:flex-start;gap:12px;padding:16px;background:rgba(15,23,42,0.5);border-radius:12px;border:1px solid rgba(100,116,139,0.1);">
+                        <div style="flex-shrink:0;width:32px;height:32px;border-radius:8px;background:rgba(139,92,246,0.15);color:#a78bfa;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;">2</div>
+                        <div>
+                            <div style="font-size:14px;font-weight:600;color:#e2e8f0;">Diseño UI/UX definitivo</div>
+                            <div style="font-size:13px;color:#94a3b8;margin-top:4px;">Refinar las pantallas del Portal Proveedores y el nuevo Módulo de Inicio</div>
+                        </div>
+                    </div>
+                    <div style="display:flex;align-items:flex-start;gap:12px;padding:16px;background:rgba(15,23,42,0.5);border-radius:12px;border:1px solid rgba(100,116,139,0.1);">
+                        <div style="flex-shrink:0;width:32px;height:32px;border-radius:8px;background:rgba(16,185,129,0.15);color:#34d399;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;">3</div>
+                        <div>
+                            <div style="font-size:14px;font-weight:600;color:#e2e8f0;">Desarrollo e implementación</div>
+                            <div style="font-size:13px;color:#94a3b8;margin-top:4px;">Construir la lógica de redirección y los nuevos componentes en Dito</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
